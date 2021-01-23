@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -15,15 +16,23 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new User;
-        $admin->email = 'admin@lokalize.com';
-        $admin->token = $this->generateUserToken();
-        $admin->save();
+        /** @var User $admin */
+        $admin = User::updateOrCreate(
+            ['email' => 'admin@lokalize.com'],
+            ['token' => $this->generateUserToken()]
+        );
 
-        $user = new User;
-        $user->email = 'user@lokalize.com';
-        $user->token = $this->generateUserToken();
-        $user->save();
+        /** @var User $user */
+        $user = User::updateOrCreate(
+            ['email' => 'user@lokalize.com'],
+            ['token' => $this->generateUserToken()]
+        );
+
+        $adminRole = Role::where(['name' => User::ROLE_ADMIN])->first();
+        $userRole = Role::where(['name' => User::ROLE_USER])->first();
+
+        $admin->assignRole($adminRole);
+        $user->assignRole($userRole);
     }
 
     private function generateUserToken(): string
