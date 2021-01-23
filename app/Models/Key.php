@@ -22,8 +22,8 @@ class Key extends Model
         'name',
     ];
 
-    protected $visible = [
-        'id',
-        'name',
-    ];
+    public function translations()
+    {
+        return $this->hasMany(Translation::class);
+    }
 }

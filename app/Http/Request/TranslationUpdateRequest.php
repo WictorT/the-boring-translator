@@ -7,12 +7,12 @@ namespace App\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-class KeyUpdateRequest extends FormRequest
+class TranslationUpdateRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:keys,name',
+            'value' => 'required|string',
         ];
     }
 }

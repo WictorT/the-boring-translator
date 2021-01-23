@@ -7,12 +7,6 @@ namespace App\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
-class KeyCreateRequest extends FormRequest
+class KeyCreateRequest extends KeyUpdateRequest
 {
-    public function rules(): array
-    {
-        return [
-            'name' => 'required|unique:keys,name',
-        ];
-    }
 }
