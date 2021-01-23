@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->group(function() {
+    Route::middleware('can:read')->group(function () {
+        Route::get('/translations', 'App\Http\Controllers\TranslationController@index');
 
-Route::middleware('auth:api')->get('/translations', 'App\Http\Controllers\TranslationController@index');
+        Route::get('/keys', 'App\Http\Controllers\KeyController@list');
+        Route::get('/keys/{id}', 'App\Http\Controllers\KeyController@get')->where('id', '[0-9]+');
+    });
+
+    Route::middleware('can:write')->group(function () {
+        Route::post('/keys', 'App\Http\Controllers\KeyController@create');
+        Route::put('/keys/{id}', 'App\Http\Controllers\KeyController@update')->where('id', '[0-9]+');
+        Route::delete('/keys/{id}', 'App\Http\Controllers\KeyController@delete')->where('id', '[0-9]+');
+    });
+});

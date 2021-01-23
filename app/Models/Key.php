@@ -21,4 +21,9 @@ class Key extends Model
     protected $fillable = [
         'name',
     ];
+
+    protected $visible = [
+        'id',
+        'name',
+    ];
 }

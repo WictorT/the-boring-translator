@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Key;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -16,6 +17,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        if (User::count()) {
+            return;
+        }
+
         /** @var User $admin */
         $admin = User::updateOrCreate(
             ['email' => 'admin@lokalize.com'],
