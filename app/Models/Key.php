@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $token
  */
-class Language extends Model
+class Key extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,5 @@ class Language extends Model
      */
     protected $fillable = [
         'name',
-        'iso_code',
-        'is_rtl',
     ];
 }
