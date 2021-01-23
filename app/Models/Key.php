@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
  * @package App\Models
  *
- * @property string $email
- * @property string $token
+ * @property Translation[] $translations
  */
 class Key extends Model
 {
+    use HasFactory;
+
     /**
      * The attributes that are mass assignable.
      *

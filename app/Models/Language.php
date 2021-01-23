@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class User
  * @package App\Models
  *
- * @property string $email
- * @property string $token
+ * @property string $iso_code
  */
 class Language extends Model
 {
