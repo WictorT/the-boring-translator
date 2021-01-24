@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ExportRequestedEvent;
 use App\Models\Key;
-use App\Service\ExportBuilder;
+use App\Builders\ExportBuilder;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use ZipArchive;
@@ -14,16 +15,13 @@ class ExportController extends Controller
     {
         $keys = Key::all()->load('translations');
 
-        $exportKey = (new ExportBuilder)
-            ->setKeys($keys)
-            ->prepareJson()
-            ->prepareYaml()
-            ->exportZip()
-            ->getExportKey();
+        $exportBuilder = (new ExportBuilder)->setKeys($keys);
+
+        ExportRequestedEvent::dispatch($exportBuilder);
 
         return response()->json([
             'download_link' => route('web.download.translations', [
-                'download_key' => $exportKey,
+                'download_key' => $exportBuilder->getExportKey(),
             ])
         ]);
     }

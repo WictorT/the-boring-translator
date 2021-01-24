@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Key;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class KeyFactory extends Factory
 {
@@ -22,7 +23,7 @@ class KeyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->text
+            'name' => Str::kebab($this->faker->text)
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Key;
 use App\Models\Translation;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TranslationFactory extends Factory
 {
@@ -24,8 +25,6 @@ class TranslationFactory extends Factory
     {
         return [
             'value' => $this->faker->realText(),
-//             TODO
-//            'language_iso_code' => $this->faker->randomElement(Language::all())->iso_code,
             'language_iso_code' => 'en',
             'key_id' => Key::factory()->create()->getKey(),
 //             TODO not to forget

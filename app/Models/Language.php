@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  *
  * @property string $iso_code
+ * @property string $is_rtl
  */
 class Language extends Model
 {

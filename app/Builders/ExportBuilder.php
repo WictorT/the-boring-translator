@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Builders;
 
 
 use App\Models\Key;
@@ -21,7 +21,10 @@ class ExportBuilder
     /** @var ZipArchive */
     private $zipArchive;
 
-    /** @var array */
+    /** @var Collection */
+    private $keys;
+
+    /** @var Collection */
     private $groupedTranslations;
 
     public function __construct()
@@ -40,7 +43,14 @@ class ExportBuilder
      */
     public function setKeys(Collection $keys): self
     {
-        $this->groupedTranslations = $this->groupTranslationsByLanguage($keys);
+        $this->keys = $keys;
+
+        return $this;
+    }
+
+    public function groupKeys(): self
+    {
+        $this->groupedTranslations = $this->groupTranslationsByLanguage($this->keys);
 
         return $this;
     }
@@ -106,12 +116,15 @@ class ExportBuilder
         $groupedTranslations = [];
 
         Language::all()->each(function (Language $language) use (&$groupedTranslations) {
-            $groupedTranslations[$language->iso_code] = [];
+            $groupedTranslations[$language->iso_code] = [
+                'is_rtl' => $language->is_rtl,
+                'translations' => []
+            ];
         });
 
         $keys->each(function (Key $key) use (&$groupedTranslations) {
             $key->translations->each(function (Translation $translation) use (&$groupedTranslations) {
-                $groupedTranslations[$translation->language_iso_code][] = [
+                $groupedTranslations[$translation->language_iso_code]['translations'][] = [
                     'key' => $translation->key->name,
                     'value' => $translation->value,
                 ];
