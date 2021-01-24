@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Builders\ExportBuilder;
 use App\Events\ExportRequestedEvent;
 use App\Models\Key;
-use App\Builders\ExportBuilder;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use ZipArchive;
 
 class ExportController extends Controller
 {

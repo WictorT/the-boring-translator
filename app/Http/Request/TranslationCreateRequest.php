@@ -4,9 +4,6 @@
 namespace App\Http\Request;
 
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
-
 class TranslationCreateRequest extends TranslationUpdateRequest
 {
     public function rules(): array
