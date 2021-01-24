@@ -21,7 +21,7 @@ Route::middleware('auth:api')->group(function() {
         Route::get('/keys', 'App\Http\Controllers\KeyController@list');
         Route::get('/keys/{id}', 'App\Http\Controllers\KeyController@get')->where('id', '[0-9]+');
 
-        Route::get('/export', 'App\Http\Controllers\ExportController@export');
+        Route::middleware('can:read')->post('/export', 'App\Http\Controllers\ExportController@export');
     });
 
     Route::middleware('can:write')->group(function () {

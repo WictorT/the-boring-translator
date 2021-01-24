@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/download/{download_key}', 'App\Http\Controllers\ExportController@download')->name('web.download.translations');

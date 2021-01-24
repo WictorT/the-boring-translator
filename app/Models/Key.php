@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class User
  * @package App\Models
  *
- * @property Translation[] $translations
+ * @property Translation[]|Collection $translations
+ * @property string $name
  */
 class Key extends Model
 {
