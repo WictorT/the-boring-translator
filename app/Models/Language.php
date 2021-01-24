@@ -22,4 +22,11 @@ class Language extends Model
         'iso_code',
         'is_rtl',
     ];
+
+    protected $visible = [
+        'id',
+        'name',
+        'iso_code',
+        'is_rtl',
+    ];
 }

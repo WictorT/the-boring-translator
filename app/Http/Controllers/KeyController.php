@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Request\KeyCreateRequest;
 use App\Http\Request\KeyUpdateRequest;
 use App\Models\Key;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class KeyController extends Controller
 {
@@ -17,7 +15,7 @@ class KeyController extends Controller
 
     public function get(int $id)
     {
-        return Key::findOrFail($id);
+        return Key::findOrFail($id)->load('translations');
     }
 
     public function create(KeyCreateRequest $request)

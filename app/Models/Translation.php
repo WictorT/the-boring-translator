@@ -31,6 +31,13 @@ class Translation extends Model
         'key_id',
     ];
 
+    protected $visible = [
+        'id',
+        'language_iso_code',
+        'value'
+    ];
+
+
     public function language()
     {
         return $this->belongsTo(Language::class, 'language_iso_code', 'iso_code');

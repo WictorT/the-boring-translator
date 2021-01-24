@@ -57,5 +57,4 @@ class TranslationController extends Controller
 
         return $translation;
     }
-
 }

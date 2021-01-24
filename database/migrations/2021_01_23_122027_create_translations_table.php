@@ -22,7 +22,7 @@ class CreateTranslationsTable extends Migration
             $table->foreign('language_iso_code')->references('iso_code')->on('languages');
 
             $table->unsignedBigInteger('key_id');
-            $table->foreign('key_id')->references('id')->on('keys');
+            $table->foreign('key_id')->references('id')->on('keys')->onDelete('cascade');
 
             $table->unique(['key_id', 'language_iso_code']);
 
