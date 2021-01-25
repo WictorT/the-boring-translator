@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\ExportRequestedEvent;
 use App\Events\TranslationCreatedEvent;
 use App\Listeners\AutoUpdateTranslationsListener;
-use App\Events\ExportRequestedEvent;
 use App\Listeners\CreateZipArchiveListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

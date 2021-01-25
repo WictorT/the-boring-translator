@@ -17,7 +17,7 @@ class ExportRequestedEvent
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param ExportBuilder $exportBuilder
      */
     public function __construct(ExportBuilder $exportBuilder)
     {

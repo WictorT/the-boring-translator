@@ -10,6 +10,8 @@ use App\Models\Translation;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Component\Yaml\Yaml;
 use ZipArchive;
 
@@ -40,6 +42,8 @@ class ExportBuilder
 
     /**
      * @param Collection|Key[] $keys
+     * @return ExportBuilder
+     * @return ExportBuilder
      */
     public function setKeys(Collection $keys): self
     {
@@ -80,9 +84,8 @@ class ExportBuilder
     public function exportZip(): self
     {
         $path = storage_path('app/' . $this->exportKey);
-        $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path));
-        foreach ($files as $name => $file)
-        {
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
+        foreach ($files as $name => $file) {
             if (!$file->isDir()) {
                 $filePath = $file->getRealPath();
                 $fileName = substr($filePath, strlen($path) + 1);

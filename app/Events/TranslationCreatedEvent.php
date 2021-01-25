@@ -17,7 +17,7 @@ class TranslationCreatedEvent
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Translation $translation
      */
     public function __construct(Translation $translation)
     {

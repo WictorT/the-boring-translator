@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use CitizenShipper\Bids\Commission;
 use Google\Cloud\Translate\V2\TranslateClient;
 use Illuminate\Support\ServiceProvider;
 
