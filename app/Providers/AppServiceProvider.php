@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use CitizenShipper\Bids\Commission;
+use Google\Cloud\Translate\V2\TranslateClient;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->instance(
+            TranslateClient::class,
+            new TranslateClient([
+                'keyFile' => json_decode(file_get_contents('/var/opt/google_keyfile.json'), true)
+            ])
+        );
     }
 
     /**

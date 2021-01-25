@@ -14,7 +14,6 @@ class UserProvider extends EloquentUserProvider
         return User::where('token', $credentials)->first();
     }
 
-    // TODO remove
     public function retrieveByToken($identifier, $token)
     {
         throw new LogicException('Not supported');

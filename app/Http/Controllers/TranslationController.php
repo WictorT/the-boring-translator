@@ -27,7 +27,6 @@ class TranslationController extends Controller
             throw new BadRequestHttpException("Translation for this key, for this language already exists.");
         }
 
-        // TODO extract
         $translation = null;
         DB::transaction(function () use ($translations, $request, &$translation) {
             $translation = $translations->save(

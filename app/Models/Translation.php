@@ -45,7 +45,6 @@ class Translation extends Model
 
     public function key()
     {
-        // TODO remove explicit ids
         return $this->belongsTo(Key::class, 'key_id', 'id');
     }
 }

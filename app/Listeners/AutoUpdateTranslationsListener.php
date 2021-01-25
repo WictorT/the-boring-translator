@@ -9,21 +9,6 @@ use Google\Cloud\Translate\V2\TranslateClient;
 
 class AutoUpdateTranslationsListener
 {
-    /** @var TranslateClient */
-    private $translateClient;
-
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->translateClient = new TranslateClient([
-            'keyFile' => json_decode(file_get_contents('/var/opt/google_keyfile.json'), true)
-        ]);
-    }
-
     /**
      * Handle the event.
      *
@@ -38,7 +23,7 @@ class AutoUpdateTranslationsListener
         });
 
         $newTranslations = $targetLanguages->map(function (Language $targetLanguage) use ($sourceTranslation) {
-            $clientTranslation = $this->translateClient->translate(
+            $clientTranslation = app(TranslateClient::class)->translate(
                 $sourceTranslation->value,
                 [
                     'source' => $sourceTranslation->language_iso_code,

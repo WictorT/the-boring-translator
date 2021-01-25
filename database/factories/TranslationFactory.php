@@ -27,8 +27,7 @@ class TranslationFactory extends Factory
             'value' => $this->faker->realText(),
             'language_iso_code' => 'en',
             'key_id' => Key::factory()->create()->getKey(),
-//             TODO not to forget
-//            'is_rtl'
+            'is_rtl' => false
         ];
     }
 }

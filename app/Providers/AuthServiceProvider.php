@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Auth\TokenGuard;
 use App\Auth\UserProvider;
+use Illuminate\Auth\TokenGuard;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
