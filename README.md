@@ -20,7 +20,7 @@ You can now access the api here (by default): [http://localhost](http://localhos
 * Translations are auto-updated from GoogleCloud, only after you:
     1. Created a key
     2. Created at least a translation for that key
-* To export the translations call `POST /export`. You will get the link to download, while the export will happen in the background.
+* To get the zip archive call `POST /export`. You will get the link to download, while the export will happen in the background.
 * I did not use Transformers on intention. It breaks the MVC a bit but project requirements does not make them mandatory at the moment.
 
 ### Documentation
