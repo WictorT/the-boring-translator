@@ -8,9 +8,9 @@
  - [**Git**](https://www.atlassian.com/git/tutorials/install-git)
  - [**Sail**](https://laravel.com/docs/8.x/sail#installation) or [**Docker**](https://docs.docker.com/engine/installation/)
 
-### Set up (using Sail)
+### Set up
 1. Put your Google Cloud key file at this path: `~/.config/google_keyfile.json` 
-2. Run `sail up`
+2. Run `sail up` or `docker-compose up`(for docker you migth need some additional setup)
 3. Migrations & Seeds `sail artisan migrate --seed`
 4. The previous command will also output two access tokens you can use to access the api.
 
